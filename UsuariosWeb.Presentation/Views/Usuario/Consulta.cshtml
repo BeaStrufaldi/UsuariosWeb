@@ -1,0 +1,50 @@
+﻿@model List<UsuariosWeb.Presentation.Models.UsuariosConsultaModel>
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Consulta</h2>
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="/Usuario/Relatorio" class="btn btn-outline-info"> Exportar</a>
+            </div>
+        </div>
+        <hr />
+
+        <table id="tabela" class="table table-hover table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Cadastro em</th>
+                    <th>Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>@item.Email</td>
+                        <td>@item.DataCadastro.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a href="/Usuario/Edicao?id=@item.IdUsuario" class="btn btn-outline-primary btn-sm">Editar</a>
+                            <a href="/Usuario/Exclusao?id=@item.IdUsuario" class="btn btn-outline-danger btn-sm" onclick="return confirm('Confirma?')">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        Quantidade de usuarios: @Model.Count
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

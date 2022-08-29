@@ -1,0 +1,24 @@
+﻿@model UsuariosWeb.Presentation.Models.UsuariosMinhaContaModel
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2>Minha Conta</h2>
+        <hr />
+        <div class="mb-3">
+            Usuário: <strong class="text-primary">@Model.Nome</strong>
+        </div>
+        <div class="mb-3">
+            Email: <strong class="text-primary">@Model.Email</strong>
+        </div>
+        <div class="mb-3">
+            Perfil: <strong class="text-primary">@Model.Perfil</strong>
+        </div>
+        <div class="mb-3">
+            Cadastrado em: <strong class="text-primary">@Model.DataCadastro</strong>
+        </div>
+    </div>
+</div>

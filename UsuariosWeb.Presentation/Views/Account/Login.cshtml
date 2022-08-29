@@ -1,0 +1,76 @@
+﻿@* definindo a classe de modelo da página *@
+@model UsuariosWeb.Presentation.Models.AccountLoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <!-- folhas de estilo CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+<body class="bg-secondary">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-4 offset-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA-J8ytgHHruf09XHyQrOYjKlIOijfPMk5Cg&usqp=CAU" class="img-fluid mb-3"/>
+                            <h1>UsuariosWeb!</h1>
+                            <h5>Acesso ao Sistema</h5>
+                        </div>
+                        <hr />
+
+                        @* formulário para captura dos campos *@
+                        @using (Html.BeginForm())
+                        {
+                            <div class="mb-3">
+                                <label>Email de acesso:</label>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                <span class="text-danger">
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Senha de acesso:</label>
+                                @Html.PasswordFor(model => model.Senha, new { @class = "form-control" })
+                                <span class="text-danger">
+                                    @Html.ValidationMessageFor(model => model.Senha)
+
+                                </span>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-grid">
+                                    <input type="submit" value="Acessar Sistema" class="btn btn-primary"/>
+                                </div>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <div class="d-grid">
+                                    <a href="/Account/Register" class="btn btn-light">Cadastrar</a>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                @if(TempData["MensagemErro"] != null)
+                                {
+                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <div class="text-danger">
+                                            @TempData["MensagemErro"]
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- arquivos javascript -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
